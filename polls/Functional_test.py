@@ -63,3 +63,23 @@ class FunctionalTest(TestCase):
         h2=self.browser.find_element(By.XPATH, '//h2[text()="William Ravelo"]')
 
         self.assertIn('William Ravelo', h2.text)
+
+    def test_loginIndependiente(self):
+        self.browser.get('http://localhost:8000')
+
+        link = self.browser.find_element_by_id('id_login')
+        link.click()
+        self.browser.implicitly_wait(3)
+
+        usuario = self.browser.find_element_by_id('username')
+        usuario.send_keys('wrravelo22')
+
+        clave = self.browser.find_element_by_id('passwrod')
+        clave.send_keys('clave123')
+
+        ingresar = self.browser.find_element_by_id('id_ingresar')
+        ingresar.click()
+        self.browser.implicitly_wait(3)
+
+        editarPerfil = self.browser.find_element_by_id('id_editar')
+        self.assertIn('Editar', editarPerfil.text)
