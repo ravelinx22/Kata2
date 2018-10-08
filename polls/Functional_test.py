@@ -2,11 +2,12 @@ __author__ = 'asistente'
 from unittest import TestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import os
 
 class FunctionalTest(TestCase):
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Chrome()
         self.browser.implicitly_wait(2)
 
     def tearDown(self):
@@ -17,6 +18,7 @@ class FunctionalTest(TestCase):
         self.assertIn('Busco Ayuda', self.browser.title)
 
     def test_registro(self):
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.browser.get('http://localhost:8000')
         link = self.browser.find_element_by_id('id_register')
         link.click()
@@ -38,7 +40,7 @@ class FunctionalTest(TestCase):
         correo.send_keys('jd.patino1@uniandes.edu.co')
 
         imagen = self.browser.find_element_by_id('id_imagen')
-        imagen.send_keys('C:\Users\asistente\Desktop\developer.jpg')
+        imagen.send_keys(BASE_DIR + "/static/test.png")
 
         nombreUsuario = self.browser.find_element_by_id('id_username')
         nombreUsuario.send_keys('juan645')
