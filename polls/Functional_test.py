@@ -14,8 +14,8 @@ class FunctionalTest(TestCase):
         self.browser.quit()
 
     def test_title(self):
-        #self.browser.get('http://localhost:8000')
-        #self.assertIn('Busco Ayuda', self.browser.title)
+        self.browser.get('http://localhost:8000')
+        self.assertIn('Busco Ayuda', self.browser.title)
 
     def test_registro(self):
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
