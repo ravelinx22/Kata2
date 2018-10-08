@@ -56,10 +56,10 @@ class FunctionalTest(TestCase):
         self.assertIn('William Ravelo', span.text)
 
     def test_verDetalle(self):
-        #self.browser.get('http://localhost:8000')
-        #span=self.browser.find_element(By.XPATH, '//span[text()="William Ravelo"]')
-        #span.click()
+        self.browser.get('http://localhost:8000')
+        span=self.browser.find_element(By.XPATH, '//span[text()="William Ravelo"]')
+        span.click()
 
-        #h2=self.browser.find_element(By.XPATH, '//h2[text()="William Ravelo"]')
+        h2=self.browser.find_element(By.XPATH, '//h2[text()="William Ravelo"]')
 
-        #self.assertIn('William Ravelo', h2.text)
+        self.assertIn('William Ravelo', h2.text)
