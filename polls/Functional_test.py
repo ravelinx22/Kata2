@@ -146,3 +146,22 @@ class FunctionalTest(TestCase):
         span=self.browser.find_element(By.XPATH, '//span[text()="Ricardo Mendez"]')
 
         self.assertIn('Ricardo Mendez', span.text)
+
+    def test_comentar(self):
+        self.browser.get('http://localhost:8000')
+        span=self.browser.find_element(By.XPATH, '//span[text()="Ricardo Mendez"]')
+        span.click()
+
+        correo = self.browser.find_element_by_id('correo')
+        correo.send_keys('test@agiles.com')
+
+        comentario = self.browser.find_element_by_id('comentario')
+        comentario.send_keys('Un comentario')
+
+        botonComentar = self.browser.find_element_by_id('id_comentar')
+        botonComentar.click()
+        self.browser.implicitly_wait(3)
+
+        h4=self.browser.find_element(By.XPATH, '//h4[text()="test@agiles.com"]')
+
+        self.assertIn('test@agiles.com', h4.text)
