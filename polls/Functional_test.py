@@ -101,6 +101,7 @@ class FunctionalTest(TestCase):
         ingresar = self.browser.find_element_by_id('id_ingresar')
         ingresar.click()
         self.browser.implicitly_wait(10)
+        self.browser.get('http://localhost:8000')
 
         editarPerfil = self.browser.find_element_by_id('id_editar')
         editarPerfil.click()
