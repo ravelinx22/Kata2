@@ -83,3 +83,63 @@ class FunctionalTest(TestCase):
 
         editarPerfil = self.browser.find_element_by_id('id_editar')
         self.assertIn('Editar', editarPerfil.text)
+
+    def test_editarIndependiente(self):
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.browser.get('http://localhost:8000')
+
+        link = self.browser.find_element_by_id('id_login')
+        link.click()
+        self.browser.implicitly_wait(3)
+
+        usuario = self.browser.find_element_by_id('username')
+        usuario.send_keys('wrravelo33')
+
+        clave = self.browser.find_element_by_id('password')
+        clave.send_keys('clave123')
+
+        ingresar = self.browser.find_element_by_id('id_ingresar')
+        ingresar.click()
+        self.browser.implicitly_wait(3)
+
+        editarPerfil = self.browser.find_element_by_id('id_editar')
+        editarPerfil.click()
+        self.browser.implicitly_wait(3)
+
+        nombre = self.browser.find_element_by_id('id_nombre')
+        nombre.clear()
+        nombre.send_keys('Ricardo')
+
+        apellidos = self.browser.find_element_by_id('id_apellidos')
+        apellidos.clear()
+        apellidos.send_keys('Mendez')
+
+        experiencia = self.browser.find_element_by_id('id_aniosExperiencia')
+        experiencia.clear()
+        experiencia.send_keys('1')
+
+        self.browser.find_element_by_xpath("//select[@id='id_tiposDeServicio']/option[text()='Desarrollador Web']").click()
+
+        telefono = self.browser.find_element_by_id('id_telefono')
+        telefono.clear()
+        telefono.send_keys('3012222222')
+
+        correo = self.browser.find_element_by_id('id_correo')
+        correo.clear()
+        correo.send_keys('wrravelo@uniandes.edu.co')
+
+        imagen = self.browser.find_element_by_id('id_imagen')
+        imagen.clear()
+        imagen.send_keys(BASE_DIR + "/static/test.png")
+
+        botonGrabar = self.browser.find_element_by_id('id_grabar')
+        botonGrabar.click()
+        self.browser.implicitly_wait(3)
+
+        salir = self.browser.find_element_by_id('id_logout')
+        salir.click()
+        self.browser.implicitly_wait(3)
+
+        span=self.browser.find_element(By.XPATH, '//span[text()="Ricardo Mendez"]')
+
+        self.assertIn('Max Raul Cruz Rodriguez', span.text)
