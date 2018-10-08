@@ -137,6 +137,8 @@ class FunctionalTest(TestCase):
         botonGrabar.click()
         self.browser.implicitly_wait(3)
 
+        self.browser.get('http://localhost:8000')
+
         salir = self.browser.find_element_by_id('id_logout')
         salir.click()
         self.browser.implicitly_wait(3)
