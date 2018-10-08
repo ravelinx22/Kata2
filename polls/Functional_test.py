@@ -93,14 +93,14 @@ class FunctionalTest(TestCase):
         self.browser.implicitly_wait(3)
 
         usuario = self.browser.find_element_by_id('username')
-        usuario.send_keys('wrravelo33')
+        usuario.send_keys('wrravelo22')
 
         clave = self.browser.find_element_by_id('password')
         clave.send_keys('clave123')
 
         ingresar = self.browser.find_element_by_id('id_ingresar')
         ingresar.click()
-        self.browser.implicitly_wait(3)
+        self.browser.implicitly_wait(10)
 
         editarPerfil = self.browser.find_element_by_id('id_editar')
         editarPerfil.click()
