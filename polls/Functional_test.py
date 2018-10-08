@@ -74,7 +74,7 @@ class FunctionalTest(TestCase):
         usuario = self.browser.find_element_by_id('username')
         usuario.send_keys('wrravelo22')
 
-        clave = self.browser.find_element_by_id('passwrod')
+        clave = self.browser.find_element_by_id('password')
         clave.send_keys('clave123')
 
         ingresar = self.browser.find_element_by_id('id_ingresar')
